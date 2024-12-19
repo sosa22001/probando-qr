@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información del Usuario</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        h2 {
+            text-align: center;
+        }
+        .qr-code {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Información del Usuario</h2>
+
+    <!-- Tabla con la información del usuario -->
+    <table>
+        <tr>
+            <th>ID Usuario</th>
+            <td>12345</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>Juan Pérez</td>
+        </tr>
+        <tr>
+            <th>Correo</th>
+            <td>juan.perez@unah.edu.hn</td>
+        </tr>
+        <tr>
+            <th>Tipo de Usuario</th>
+            <td>Estudiante</td>
+        </tr>
+        <tr>
+            <th>Conferencias</th>
+            <td>
+                <ul>
+                    <li>Innovación en IA - Asistencia: Confirmada</li>
+                    <li>Robótica Avanzada - Asistencia: No confirmada</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Diploma</th>
+            <td>Estado: Disponible, Porcentaje de asistencia: 85%</td>
+        </tr>
+        <tr>
+            <th>Código de Verificación</th>
+            <td>ABC123456</td>
+        </tr>
+        <tr>
+            <th>Enlaces</th>
+            <td>
+                <a href="http://www.congreso.com/programa" target="_blank">Programa</a><br>
+                <a href="http://www.congreso.com/diploma/12345" target="_blank">Diploma</a>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Generación de QR Code -->
+    <div class="qr-code">
+        <h3>Código QR del Usuario</h3>
+        <div id="qrcode"></div>
+    </div>
+
+    <script>
+        // Datos del usuario
+        const url = {
+            "id_usuario": "12345",
+            "nombre": "Juan Pérez",
+            "correo": "juan.perez@unah.edu.hn",
+            "tipo_usuario": "Estudiante",
+            "conferencias": [
+                {
+                    "nombre": "Innovación en IA",
+                    "asistencia": "Confirmada"
+                },
+                {
+                    "nombre": "Robótica Avanzada",
+                    "asistencia": "No confirmada"
+                }
+            ],
+            "diploma": {
+                "estado": "Disponible",
+                "porcentaje_asistencia": "85%"
+            },
+            "codigo_verificacion": "ABC123456",
+            "enlaces": {
+                "programa": "www.congreso.com/programa",
+                "diploma": "www.congreso.com/diploma/12345"
+            }
+        };
+
+        // Crear el código QR a partir de la información del usuario
+        const qrCodeData = JSON.stringify(url);
+        const qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: qrCodeData,
+            width: 128,
+            height: 128,
+        });
+    </script>
+</body>
+</html>
